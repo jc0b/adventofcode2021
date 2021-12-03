@@ -4,9 +4,6 @@ sys.setrecursionlimit(3000000)
 def part_one():
 	input = open('input.txt', 'r')
 	Lines = input.readlines()
- 
-	horizontal = 0
-	vertical = 0
 	readout_sums = get_readout_sums(Lines)
 
 	gamma = [0] * len(readout_sums)
@@ -25,68 +22,48 @@ def part_one():
 def part_two():
 	input = open('input.txt', 'r')
 	Lines = input.readlines()
-	readout_sums = get_readout_sums(Lines)
-	#print(readout_sums)
-
-	oxygen_search_string = [0] * len(readout_sums)
-	co2_search_string = [0] * len(readout_sums)
-
-	bit_count = 0
-	for bit_sum in readout_sums:
-		if bit_sum >= 500:
-			oxygen_search_string[bit_count] = 1
-		elif bit_sum < 500:
-			co2_search_string[bit_count] = 1
-		bit_count += 1
-
-	print(f"Search: {tostring(oxygen_search_string)}")
 
 	search_space = convert_lines_to_lists(Lines)
-	bit_index = 0
-	for bit in oxygen_search_string:
-		search_space = filter(search_space, bit_index, bit)
-		bit_index +=1
-	print(f"Result: {tostring(search_space[0])}")
-	o2_result = int(tostring(search_space[0]), 2)
 
-	print(f"Search: {tostring(co2_search_string)}")
-	search_space = convert_lines_to_lists(Lines)
-	bit_index = 0
-	for bit in co2_search_string:
-		search_space = filter(search_space, bit_index, bit)
-		bit_index +=1
-	print(f"Result: {tostring(search_space[0])}")
-	co2_result = int(tostring(search_space[0]), 2)
+	count = 0
 
-	print(o2_result)
-	print(co2_result)
+	o2_result = int(tostring(popularity_contest(search_space, count, "o2")[0]), 2)
+	co2_result = int(tostring(popularity_contest(search_space, count, "co2")[0]), 2)
+
 	return o2_result * co2_result
+
+def popularity_contest(search_space, index, gas):
+	bit_sum = 0
+	new_search_space = []
+	for line in search_space:
+		bit_sum += int(line[index])
+	if gas == "o2":
+		if float(bit_sum) >= len(search_space)/2:
+			popular = 1
+		else:
+			popular = 0
+	elif gas == "co2":
+		if float(bit_sum) >= len(search_space)/2:
+			popular = 0
+		else:
+			popular = 1
+	for line in search_space:
+		if int(line[index]) == popular:
+			new_search_space.append(line)
+	if(len(new_search_space) > 1):
+		return popularity_contest(new_search_space, index + 1, gas)
+	else:
+		return new_search_space
 
 	
 def filter(binary, bit, criteria):
 	keep = []
 	for item in binary:
-		#print(f"Criteria = {criteria}")
-		#print(f"{item[bit]=}")
 		if int(item[bit]) == criteria:
-			#print(f"{item}, {bit}")
 			keep.append(item)
 	if(len(keep) == 0):
 		return binary
 	return keep
-
-
-
-
-
-def match_recurse(o2_string, co2_string, Lines):
-	for line in Lines:
-		if co2_string == line.strip():
-			print(f"Found a match: {co2_string}")
-		elif o2_string == line.strip():
-			print(f"Found a match: {o2_string}")
-		else:
-			match_recurse(o2_string[:-1], co2_string[:-1], Lines)
 
 
 def tostring(array):
@@ -116,5 +93,5 @@ def get_readout_sums(Lines):
 	return readout_sums
 
 if __name__ == '__main__':
-	print(part_one())
-	print(part_two())
+	print(f"Part 1: {part_one()}")
+	print(f"Part 2: {part_two()}")
