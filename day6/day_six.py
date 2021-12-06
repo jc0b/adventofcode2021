@@ -46,13 +46,8 @@ def part_two():
 		new_fish_this_round = 0
 		if lanternfish_buckets["0"] > 0:
 			new_fish_this_round = lanternfish_buckets["0"]
-			# add our new fish
-			# lanternfish_buckets["8"] += lanternfish_buckets["0"]
-			# # reset the counter on our fish that just bred
-			# lanternfish_buckets["6"] += lanternfish_buckets["0"]
-			# empty out our to-breed fish
-
 			lanternfish_buckets["0"] = 0
+
 		lanternfish_buckets["0"] = lanternfish_buckets["1"]
 		lanternfish_buckets["1"] = lanternfish_buckets["2"]
 		lanternfish_buckets["2"] = lanternfish_buckets["3"]
@@ -66,19 +61,8 @@ def part_two():
 	population = 0
 	for key in lanternfish_buckets:
 		population += lanternfish_buckets[key]
-	# for i in range(256):
-	# 	new_fish = []
-	# 	for i, fish in enumerate(lanternfish_school):
-	# 		if lanternfish_school[i] == 0:
-	# 			new_fish.append(8)
-	# 			lanternfish_school[i] = 6
-	# 			continue
-	# 		lanternfish_school[i] -= 1
-	# 	lanternfish_school += new_fish
-
-	# return len(lanternfish_school)
 	return population
 
 if __name__ == '__main__':
-	print(part_one())
-	print(part_two())
+	print(f"Part One: {part_one()}")
+	print(f"Part Two: {part_two()}")
