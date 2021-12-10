@@ -2,8 +2,8 @@ import re
 
 # (\d+,\d+)\s->\s(\d+,\d+)
 
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	vectors = []
@@ -12,12 +12,12 @@ def part_one():
 	for line in Lines:
 		(re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[0].split(), re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[1].split())
 		vectors.append((re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[0].split(","), re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[1].split(",")))
-	print(vectors[0])
+	# print(vectors[0])
 	count = 0
 	for vector in vectors:
 		if vector[0][0] == vector[1][0]:
 			# vertical line
-			print(f"V: {vector}")
+			# print(f"V: {vector}")
 			if int(vector[0][1]) - int(vector[1][1]) <= 0:
 				# range is ascending
 				for i in range(int(vector[0][1]), int(vector[1][1])+1):
@@ -33,7 +33,7 @@ def part_one():
 				
 		elif vector[0][1] == vector[1][1]:
 			# horizontal line
-			print(f"H: {vector}")
+			# print(f"H: {vector}")
 			if int(vector[0][0]) - int(vector[1][0]) <= 0:
 				# range is ltr
 				y = int(vector[0][1])
@@ -54,8 +54,8 @@ def part_one():
 				intersections +=1
 	return intersections
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	vectors = []
@@ -64,12 +64,12 @@ def part_two():
 	for line in Lines:
 		(re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[0].split(), re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[1].split())
 		vectors.append((re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[0].split(","), re.match("(\d+,\d+)\s->\s(\d+,\d+)", line.strip()).groups()[1].split(",")))
-	print(vectors[0])
+	# print(vectors[0])
 	count = 0
 	for vector in vectors:
 		if vector[0][0] == vector[1][0]:
 			# vertical line
-			print(f"V: {vector}")
+			# print(f"V: {vector}")
 			if int(vector[0][1]) - int(vector[1][1]) <= 0:
 				# range is ascending
 				for i in range(int(vector[0][1]), int(vector[1][1])+1):
@@ -85,7 +85,7 @@ def part_two():
 				
 		elif vector[0][1] == vector[1][1]:
 			# horizontal line
-			print(f"H: {vector}")
+			# print(f"H: {vector}")
 			if int(vector[0][0]) - int(vector[1][0]) <= 0:
 				# range is ltr
 				y = int(vector[0][1])
@@ -100,7 +100,7 @@ def part_two():
 					grid[i][y] +=1
 		else:
 			# diagonal line
-			print(f"D: {vector}")
+			# print(f"D: {vector}")
 
 			## 797,795 -> 273,271
 			## 797 > 273 && 795 > 271 -> \ rtl
@@ -172,5 +172,5 @@ def printgrid(grid):
 		print(row)
 
 if __name__ == '__main__':
-	print(f"Part One: {part_one()}")
-	print(f"Part Two: {part_two()}")
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))

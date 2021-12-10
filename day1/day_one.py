@@ -1,5 +1,5 @@
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
  
 	higher = 0
@@ -15,8 +15,8 @@ def part_one():
 		line_number += 1
 	return(higher)
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
  
 	numbers = []
@@ -39,5 +39,5 @@ def part_two():
 	return higher
 
 if __name__ == '__main__':
-	print(part_one())
-	print(part_two())
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))

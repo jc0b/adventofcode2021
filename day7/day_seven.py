@@ -1,5 +1,5 @@
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	crab_horizontal = [int(x) for x in Lines[0].strip().split(",")]
@@ -13,8 +13,8 @@ def part_one():
 			smallest_sum = movement_sum
 	return smallest_sum
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	crab_horizontal = [int(x) for x in Lines[0].strip().split(",")]
@@ -29,8 +29,8 @@ def part_two():
 	return int(smallest_sum)
 
 if __name__ == '__main__':
-	print(part_one())
-	print(part_two())
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))
 
 
 ## for every possible movement value

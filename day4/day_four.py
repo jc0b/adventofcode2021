@@ -61,8 +61,8 @@ class BingoBoard(object):
 		
 
 
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	bingo_numbers = Lines[0].strip().split(",")
@@ -88,8 +88,8 @@ def part_one():
 
 	
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 	bingo_numbers = Lines[0].strip().split(",")
 	boards = []
@@ -111,5 +111,5 @@ def part_two():
 	return winning_indexes[list(winning_indexes)[-1]]
 
 if __name__ == '__main__':
-	print(f"Highest Possible score: {part_one()}")
-	print(f"Last board to win has score: {part_two()}")
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))

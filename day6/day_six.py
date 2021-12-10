@@ -1,5 +1,5 @@
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	lanternfish_school = [int(x) for x in Lines[0].strip().split(",")]
@@ -15,8 +15,8 @@ def part_one():
 
 	return len(lanternfish_school)
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	lanternfish_school = [int(x) for x in Lines[0].strip().split(",")]
@@ -64,5 +64,5 @@ def part_two():
 	return population
 
 if __name__ == '__main__':
-	print(f"Part One: {part_one()}")
-	print(f"Part Two: {part_two()}")
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))

@@ -1,6 +1,6 @@
 
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
  
 	horizontal = 0
@@ -13,8 +13,8 @@ def part_one():
 		vertical += result[1]
 	return(horizontal*vertical)
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
  
 	horizontal = 0
@@ -40,5 +40,5 @@ def parse_instructions(instructions):
 		return (0, instructions[1])
 
 if __name__ == '__main__':
-	print(part_one())
-	print(part_two())
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))

@@ -1,8 +1,8 @@
 import sys
 sys.setrecursionlimit(3000000)
 
-def part_one():
-	input = open('input.txt', 'r')
+def part_one(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 	readout_sums = get_readout_sums(Lines)
 
@@ -19,8 +19,8 @@ def part_one():
 
 	return int(tostring(gamma), 2) * int(tostring(epsilon), 2)
 
-def part_two():
-	input = open('input.txt', 'r')
+def part_two(file):
+	input = open(file, 'r')
 	Lines = input.readlines()
 
 	search_space = convert_lines_to_lists(Lines)
@@ -93,5 +93,5 @@ def get_readout_sums(Lines):
 	return readout_sums
 
 if __name__ == '__main__':
-	print(f"Part 1: {part_one()}")
-	print(f"Part 2: {part_two()}")
+	print(part_one('input.txt'))
+	print(part_two('input.txt'))
