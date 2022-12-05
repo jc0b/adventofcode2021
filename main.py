@@ -23,7 +23,7 @@ def main():
 	print(f"Day 7, part 1: {day_seven.part_one('day7/input.txt')}")
 	print(f"Day 7, part 2: {day_seven.part_two('day7/input.txt')}")
 	print(f"Day 8, part 1: {day_eight.part_one('day8/input.txt')}")
-	# print(f"Day 8, part 2: {day_eight.part_two('day8/input.txt')}")
+	print(f"Day 8, part 2: {day_eight.part_two('day8/input.txt')}")
 
 
 if __name__ == '__main__':
